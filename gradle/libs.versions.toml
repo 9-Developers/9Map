@@ -1,9 +1,11 @@
 [versions]
 axion = "1.18.18"
+jetty = "12.0.24"
 lombok = "8.13.1"
 spigot = "1.21.8-R0.1-SNAPSHOT"
 
 [libraries]
+jetty-server = { module = "org.eclipse.jetty:jetty-server", version.ref = "jetty" }
 spigot-api = { module = "org.spigotmc:spigot-api", version.ref = "spigot" }
 
 [plugins]
