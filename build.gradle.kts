@@ -19,7 +19,11 @@ repositories {
 dependencies {
     compileOnly(libs.spigot.api)
 
-    implementation(libs.jetty.server)
+    implementation(libs.bundles.grizzly)
+    implementation(libs.bundles.jackson)
+    implementation(libs.jakarta)
+    implementation(libs.jakarta.json)
+    implementation(libs.bundles.jersey)
 }
 
 testing {
