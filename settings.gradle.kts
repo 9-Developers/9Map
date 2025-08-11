@@ -4,4 +4,3 @@ plugins {
 }
 
 rootProject.name = "9Map"
-include("lib")

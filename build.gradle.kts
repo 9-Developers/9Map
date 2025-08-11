@@ -1,7 +1,7 @@
 plugins {
     checkstyle
     jacoco
-    `java-library`
+    java
 
     alias(libs.plugins.axion)
     alias(libs.plugins.lombok)
@@ -12,9 +12,13 @@ group = "tech.ixirsii.map"
 
 repositories {
     mavenCentral()
+    // Spigot
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots")
+    maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 }
 
 dependencies {
+    compileOnly(libs.spigot.api)
 }
 
 testing {
