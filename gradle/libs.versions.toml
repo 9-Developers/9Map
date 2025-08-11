@@ -1,5 +1,5 @@
 [versions]
-axion = "1.18.18"
+axion = "1.19.1"
 grizzly = "4.0.2"
 jackson = "2.19.2"
 jakarta = "4.0.0"
