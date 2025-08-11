@@ -76,6 +76,8 @@ public class WebServer {
             server.stop();
         } catch (final Exception e) {
             logger.log(Level.SEVERE, "Failed to stop web server", e);
+        } finally {
+            server.destroy();
         }
     }
 }
