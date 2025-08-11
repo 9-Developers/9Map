@@ -2,14 +2,12 @@ package tech.ixirsii.map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import com.fasterxml.jackson.datatype.jaxrs.Jaxrs2TypesModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.ixirsii.map.server.Server;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -28,7 +26,7 @@ public class MapPlugin extends JavaPlugin {
      */
     private final ObjectMapper mapper;
     /**
-     * Plugin REST server.
+     * Plugin REST and web server.
      */
     private final Server server;
 
@@ -39,7 +37,6 @@ public class MapPlugin extends JavaPlugin {
         logger = getLogger();
         mapper = JsonMapper.builder()
                 .addModule(new JavaTimeModule())
-                .addModule(new Jaxrs2TypesModule())
                 .addModule(new Jdk8Module())
                 .addModule(new ParameterNamesModule())
                 .build();
@@ -48,19 +45,15 @@ public class MapPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        logger.log(Level.INFO, "Stopping 9Map");
-
         server.stop();
 
-        logger.log(Level.INFO, "9Map disabled");
+        logger.info("9Map disabled");
     }
 
     @Override
     public void onEnable() {
-        logger.log(Level.INFO, "Starting 9Map");
-
         server.start();
 
-        logger.log(Level.INFO, "9Map enabled");
+        logger.info("9Map enabled");
     }
 }

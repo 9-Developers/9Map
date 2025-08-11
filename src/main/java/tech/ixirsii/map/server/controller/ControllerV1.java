@@ -12,7 +12,7 @@ import tech.ixirsii.map.server.data.Message;
  * @author Ryan Porterfield
  * @since 1.0.0
  */
-@Path("/api/v1")
+@Path("/v1")
 public class ControllerV1 {
     /**
      * Hello world endpoint.

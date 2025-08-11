@@ -8,6 +8,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
+import tech.ixirsii.map.server.controller.ControllerV1;
 
 import java.io.IOException;
 import java.net.URI;
@@ -24,7 +25,7 @@ public class Server {
     /**
      * Server base URI.
      */
-    private static final String BASE_URI = "https://127.0.0.1:9999";
+    private static final String BASE_URI = "https://127.0.0.1:9999/api";
 
     /**
      * Grizzly HTTP server.
@@ -50,7 +51,7 @@ public class Server {
         provider.setMapper(mapper);
 
         final ResourceConfig resourceConfig = new ResourceConfig()
-                .packages("tech.ixirsii.map.server.controller")
+                .register(ControllerV1.class)
                 .register(provider);
         final HttpHandler httpHandler = new CLStaticHttpHandler(getClass().getClassLoader(), "/site/");
 

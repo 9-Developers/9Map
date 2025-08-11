@@ -4,6 +4,7 @@ plugins {
 
     alias(libs.plugins.axion)
     alias(libs.plugins.lombok)
+    alias(libs.plugins.shadow)
 }
 
 group = "tech.ixirsii.map"
@@ -21,8 +22,7 @@ dependencies {
 
     implementation(libs.bundles.grizzly)
     implementation(libs.bundles.jackson)
-    implementation(libs.jakarta)
-    implementation(libs.jakarta.json)
+    implementation(libs.bundles.jakarta)
     implementation(libs.bundles.jersey)
 }
 
@@ -52,4 +52,12 @@ tasks.withType<Checkstyle>().configureEach {
         html.required = true
         xml.required = false
     }
+}
+
+tasks.shadowJar {
+    manifest {
+        attributes["Main-Class"] = "tech.ixirsii.map.MapPlugin"
+    }
+
+//    relocate("javax.ws.rs.core", "tech.ixirsii.map.javax.ws.rs.core")
 }
